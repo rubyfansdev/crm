@@ -69,8 +69,6 @@ GEM
     ast (2.4.2)
     bcrypt (3.1.19)
     bindex (0.8.1)
-    bootsnap (1.16.0)
-      msgpack (~> 1.2)
     builder (3.2.4)
     bullet (7.0.7)
       activesupport (>= 3.0.0)
@@ -127,7 +125,6 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.18.1)
-    msgpack (1.7.1)
     net-imap (0.3.6)
       date
       net-protocol
@@ -145,7 +142,7 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
-    puma (5.6.6)
+    puma (6.3.0)
       nio4r (~> 2.0)
     pundit (2.3.0)
       activesupport (>= 3.0.0)
@@ -201,14 +198,14 @@ GEM
     rspec-mocks (3.12.6)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-rails (5.0.3)
-      actionpack (>= 5.2)
-      activesupport (>= 5.2)
-      railties (>= 5.2)
-      rspec-core (~> 3.10)
-      rspec-expectations (~> 3.10)
-      rspec-mocks (~> 3.10)
-      rspec-support (~> 3.10)
+    rspec-rails (6.0.3)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.12)
+      rspec-expectations (~> 3.12)
+      rspec-mocks (~> 3.12)
+      rspec-support (~> 3.12)
     rspec-support (3.12.1)
     rubocop (1.54.2)
       json (~> 2.3)
@@ -299,7 +296,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bootsnap
   bullet
   cssbundling-rails
   debug
@@ -308,11 +304,11 @@ DEPENDENCIES
   factory_bot_rails (~> 6.2)
   faker
   jsbundling-rails
-  puma (~> 5.0)
+  puma (~> 6.0)
   pundit
   rails (~> 7.0.4, >= 7.0.4.3)
   redis (~> 4.0)
-  rspec-rails (~> 5.0.0)
+  rspec-rails (~> 6.0.0)
   rubocop
   rubocop-i18n
   rubocop-performance
@@ -325,7 +321,6 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
-  tzinfo-data
   web-console
 
 RUBY VERSION
