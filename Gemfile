@@ -19,7 +19,7 @@ gem 'redis', '~> 4.0'
 gem 'sassc-rails'
 gem 'sidekiq'
 gem 'slim-rails', '~> 3.6.1'
-
+gem 'pundit'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
