@@ -21,9 +21,18 @@ gem 'slim-rails', '~> 3.6.1'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'bullet'
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'faker'
+  gem 'rspec-rails', '~> 5.0.0'
 end
 
 group :development do
+  gem 'rubocop', require: false
+  gem 'rubocop-i18n', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
   gem "web-console"
 end
 
