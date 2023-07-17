@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_many :members, dependent: :destroy
   has_many :workspaces, through: :members, dependent: :destroy
-  has_many :author_threads, foreign_key: :author_id, class_name: 'Thread', dependent: :destroy
+  has_many :author_workspaces, foreign_key: :author_id, class_name: 'Workspace', dependent: :destroy
 end
