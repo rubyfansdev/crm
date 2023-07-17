@@ -13,7 +13,7 @@ class WorkspacesController < ApplicationController
   end
 
   def create
-    @workspace = Workspace.new(workspace_params).merge(author: current_user)
+    @workspace = Workspace.new(workspace_params.merge(author: current_user))
     if @workspace.save
       redirect_to @workspace, notice: 'Your workspace successfully created.'
     else
