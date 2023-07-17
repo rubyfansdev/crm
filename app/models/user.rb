@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :members, dependent: :destroy
-  has_many :threads, through: :members, dependent: :destroy
+  has_many :workspaces, through: :members, dependent: :destroy
+  has_many :author_threads, foreign_key: :author_id, class_name: 'Thread', dependent: :destroy
 end
