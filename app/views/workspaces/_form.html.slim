@@ -1,6 +1,5 @@
-= form_with model: @workspace do |f|
-  = f.label :место
-  br
-  = f.text_field :title
-  br
-  = f.submit 'Создать'
+= simple_form_for workspace do |f|
+  .mt-2
+    = f.text_field :title, for: "floatingInput", class: 'form-control', placeholder: 'Введите название'
+  .mt-1
+    = f.submit 'Создать', class: 'btn btn-sm btn-primary'

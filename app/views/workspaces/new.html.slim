@@ -1,3 +1,4 @@
 h1 Workspaces#new
-p Find me in app/views/workspaces/new.html.slim
-= render 'form'
+= Time.now
+= render 'shared/modal', title: 'Новый workspace' do
+  = render partial: 'form', locals: { workspace: @workspace }
