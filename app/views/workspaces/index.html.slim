@@ -1,8 +1,10 @@
 
 - @workspaces.each do |w|
-  = w.title
-  = w.author
+  = link_to w.title, w
+  br
+  = w.author.email
+  br
 .col-md-5.text-md-end.pt-md-0.pt-2
   = link_to 'Создать пространство', new_workspace_path, data: { turbo_frame: :modal }, class: 'btn btn-sm btn-outline-primary mb-1'
-h3 GGGGGG
+
 = Time.now

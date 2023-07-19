@@ -3,4 +3,13 @@ class Workspace < ApplicationRecord
 
   has_many :members, dependent: :destroy
   has_many :users, through: :members, dependent: :destroy
+
+  validates :title, presence: true
+  after_create :add_author_to_members
+
+  private
+
+  def add_author_to_members
+    users << author
+  end
 end
