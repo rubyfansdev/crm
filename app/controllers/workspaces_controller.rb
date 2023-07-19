@@ -32,7 +32,7 @@ class WorkspacesController < ApplicationController
   end
 
   def destroy
-    @workspace.destroy
+    @workspace.destroy if current_user == @workspace.author
     redirect_to root_path, notice: 'Workspace was deleted'
   end
 
