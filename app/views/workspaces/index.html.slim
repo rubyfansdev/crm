@@ -1,4 +1,4 @@
-= render partial: 'workspaces', locals: { workspaces: @workspaces }
+= render 'workspaces', workspaces: @workspaces
 .col-md-5.text-md-end.pt-md-0.pt-2
   = link_to 'Создать пространство', new_workspace_path, data: { turbo_frame: :modal }, class: 'btn btn-sm btn-outline-primary mb-1'
 
