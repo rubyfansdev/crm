@@ -22,7 +22,7 @@ class WorkspacesController < ApplicationController
           render turbo_stream: [turbo_stream.update('workspaces',
                                                     partial: 'workspaces/workspaces',
                                                     locals: { :workspaces => workspaces }),
-                                                    turbo_stream.update('notice',
+                                turbo_stream.update('notice',
                                                     'Your workspace successfully created.')]
 
         end
