@@ -1,6 +1,6 @@
 class WorkspacesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_workspace, only: %i[show update destroy]
+  before_action :set_workspace, only: %i[show edit update destroy]
 
   def index
     @workspaces = workspaces
@@ -28,23 +28,46 @@ class WorkspacesController < ApplicationController
         end
         format.html { redirect_to @workspace, notice: 'Your workspace successfully created.' }
       else
-        format.turbo_stream
+        # debugger
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update('alert', "#{@workspace.errors.full_messages.join(' ')}")
+        end
         format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
 
   def update
-    if @workspace.update(workspace_params)
-      redirect_to @workspace, notice: 'Your workspace successfully updated.'
-    else
-      render :edit
+    respond_to do |format|
+      if @workspace.update(workspace_params)
+        format.turbo_stream do
+          render turbo_stream: [turbo_stream.update('workspaces',
+                                                    partial: 'workspaces/workspaces',
+                                                    locals: { :workspaces => workspaces }),
+                                turbo_stream.update('notice',
+                                                    'Your workspace successfully updated.')]
+        end
+        format.html { redirect_to root_path, notice: 'Your workspace successfully updated.' }
+      else
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.update('alert', "#{@workspace.errors.full_messages.join(' ')}")
+        end
+        format.html { render :edit,  status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
-    @workspace.destroy if current_user == @workspace.author
-    redirect_to root_path, notice: 'Workspace was deleted'
+    respond_to do |format|
+      @workspace.destroy if current_user == @workspace.author
+      format.turbo_stream do
+        render turbo_stream: [turbo_stream.remove(@question),
+                              turbo_stream.update('workspaces',
+                                                   partial: 'workspaces/workspaces',
+                                                   locals: { :workspaces => workspaces })]
+      end
+      format.html { redirect_to root_path, notice: 'Workspace was deleted' }
+    end
   end
 
   private
