@@ -29,7 +29,7 @@ class WorkspacesController < ApplicationController
         format.html { redirect_to @workspace, notice: 'Your workspace successfully created.' }
       else
         format.turbo_stream do
-          render turbo_stream: turbo_stream.update('alert', "#{@workspace.errors.full_messages.join(' ')}")
+          render turbo_stream: turbo_stream.update('alert', partial: 'shared/errors', locals: { resource: @workspace })
         end
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -49,7 +49,7 @@ class WorkspacesController < ApplicationController
         format.html { redirect_to root_path, notice: 'Your workspace successfully updated.' }
       else
         format.turbo_stream do
-          render turbo_stream: turbo_stream.update('alert', "#{@workspace.errors.full_messages.join(' ')}")
+          render turbo_stream: turbo_stream.update('alert', partial: 'shared/errors', locals: { resource: @workspace })
         end
         format.html { render :edit,  status: :unprocessable_entity }
       end
