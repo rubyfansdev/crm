@@ -28,7 +28,6 @@ class WorkspacesController < ApplicationController
         end
         format.html { redirect_to @workspace, notice: 'Your workspace successfully created.' }
       else
-        # debugger
         format.turbo_stream do
           render turbo_stream: turbo_stream.update('alert', "#{@workspace.errors.full_messages.join(' ')}")
         end
