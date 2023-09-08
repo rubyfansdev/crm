@@ -38,5 +38,5 @@ rails db:migrate
 5. Запустить рельсу и вотчеры
 
 ```sh
-bundle exec bin/dev
+bin/dev
 ```
