@@ -256,6 +256,9 @@ GEM
       connection_pool (>= 2.3.0)
       rack (>= 2.2.4)
       redis-client (>= 0.14.0)
+    simple_form (5.2.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     slim (5.1.1)
       temple (~> 0.10.0)
       tilt (>= 2.1.0)
@@ -323,6 +326,7 @@ DEPENDENCIES
   rubocop-rspec
   sassc-rails
   sidekiq
+  simple_form
   slim-rails (~> 3.6.1)
   sprockets-rails
   sqlite3 (~> 1.4)

@@ -11,8 +11,9 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p id="notice" class="notice"><%= notice %></p>
+    <p id="alert" class="alert"><%= alert %></p>
     <%= yield %>
+      <%= turbo_frame_tag :modal %>
   </body>
 </html>

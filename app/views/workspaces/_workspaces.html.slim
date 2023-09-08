@@ -1,0 +1,7 @@
+#workspaces
+  - workspaces.each do |w|
+    = link_to w.title, w
+    p
+      = link_to 'Edit', edit_workspace_path(w), data: { turbo_frame: :modal }
+      = link_to 'Delete', w, data: { turbo_method: :delete }
+    br
