@@ -1,0 +1,19 @@
+.nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container-fluid
+    .navbar-brand
+      = link_to "CRM", root_path, class: "nav-link"
+    button.navbar-toggler type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"
+      span.navbar-toggler-icon
+    .collapse.navbar-collapse#navbarText
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+      span.navbar-nav
+        ul.navbar-nav.me-auto.mb-2.mb-lg-0
+          - if user_signed_in?
+            li.nav-item
+              = link_to "Sign out", destroy_user_session_path, class: "nav-link"
+          - else
+            li.nav-item
+              = link_to "Log in", new_user_session_path, class: "nav-link"
+            li.nav-item
+              = link_to "Sign up", new_user_registration_path, class: "nav-link"
+
