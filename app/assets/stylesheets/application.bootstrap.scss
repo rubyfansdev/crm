@@ -1,2 +1,14 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+@media (max-width: 25rem) {
+  .devise {
+    margin: 5% auto auto;
+    width: 100%;
+  }
+}
+
+.devise {
+  margin: 5% auto auto;
+  width: 24rem;
+}
