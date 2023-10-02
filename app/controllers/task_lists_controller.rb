@@ -14,8 +14,9 @@ class TaskListsController < ApplicationController
     respond_to do |format|
       if @task_list.save
         format.turbo_stream do
-          render turbo_stream: [turbo_stream.update('workspace_task_list', partial: 'task_lists',
-                                                                           locals: { task_list: @task_list })]
+          render turbo_stream: [turbo_stream.update('workspace_task_list', partial: 'task_lists/task_lists',
+                                                                           locals: { task_list: @task_list,
+                                                                                     workspace: workspace })]
         end
       else
         format.turbo_stream do

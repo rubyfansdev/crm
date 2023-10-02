@@ -1,4 +1,4 @@
-#workspace
-  = render partial: 'task_lists/task_lists', locals: { workspace: @workspace }
+
+= render partial: 'task_lists/task_lists', locals: { workspace: @workspace }
 .text-center  
   = link_to 'Создать таск', new_workspace_task_list_path(@workspace), data: { turbo_frame: :modal }, class: 'btn btn-sm btn-outline-primary mb-1'
