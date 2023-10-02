@@ -10,9 +10,9 @@ class WorkspacesController < ApplicationController
     @workspace = Workspace.new
   end
 
-  def show;end
+  def show; end
 
-  def edit;end
+  def edit; end
 
   def create
     @workspace = Workspace.new(workspace_params.merge(author: current_user))
@@ -21,10 +21,9 @@ class WorkspacesController < ApplicationController
         format.turbo_stream do
           render turbo_stream: [turbo_stream.update('workspaces',
                                                     partial: 'workspaces/workspaces',
-                                                    locals: { :workspaces => workspaces }),
+                                                    locals: { workspaces: }),
                                 turbo_stream.update('notice',
                                                     'Your workspace successfully created.')]
-
         end
         format.html { redirect_to @workspace, notice: 'Your workspace successfully created.' }
       else
@@ -42,7 +41,7 @@ class WorkspacesController < ApplicationController
         format.turbo_stream do
           render turbo_stream: [turbo_stream.update('workspaces',
                                                     partial: 'workspaces/workspaces',
-                                                    locals: { :workspaces => workspaces }),
+                                                    locals: { workspaces: }),
                                 turbo_stream.update('notice',
                                                     'Your workspace successfully updated.')]
         end
@@ -51,7 +50,7 @@ class WorkspacesController < ApplicationController
         format.turbo_stream do
           render turbo_stream: turbo_stream.update('alert', partial: 'shared/errors', locals: { resource: @workspace })
         end
-        format.html { render :edit,  status: :unprocessable_entity }
+        format.html { render :edit, status: :unprocessable_entity }
       end
     end
   end
@@ -62,8 +61,8 @@ class WorkspacesController < ApplicationController
       format.turbo_stream do
         render turbo_stream: [turbo_stream.remove(@question),
                               turbo_stream.update('workspaces',
-                                                   partial: 'workspaces/workspaces',
-                                                   locals: { :workspaces => workspaces })]
+                                                  partial: 'workspaces/workspaces',
+                                                  locals: { workspaces: })]
       end
       format.html { redirect_to root_path, notice: 'Workspace was deleted' }
     end
@@ -72,7 +71,7 @@ class WorkspacesController < ApplicationController
   private
 
   def workspaces
-    workspaces = current_user.workspaces
+    current_user.workspaces
   end
 
   def set_workspace
