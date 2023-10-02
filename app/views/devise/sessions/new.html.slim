@@ -9,8 +9,8 @@
       - if devise_mapping.rememberable?
         = f.input :remember_me, as: :boolean
 
-      .actions
-        = f.button :submit, "Log In", class: 'submit_btn'
+      .actions.d-grid.gap-2
+        = f.button :submit, "Log In"
 
   .card.shared_links.text-center
     = render "devise/shared/links"
