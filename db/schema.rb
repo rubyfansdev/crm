@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_25_095258) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_02_065421) do
   create_table "members", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "workspace_id", null: false
@@ -19,6 +19,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_095258) do
     t.index ["user_id", "workspace_id"], name: "index_members_on_user_id_and_workspace_id", unique: true
     t.index ["user_id"], name: "index_members_on_user_id"
     t.index ["workspace_id"], name: "index_members_on_workspace_id"
+  end
+
+  create_table "task_lists", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "description"
+    t.integer "workspace_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["workspace_id"], name: "index_task_lists_on_workspace_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,5 +52,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_25_095258) do
 
   add_foreign_key "members", "users"
   add_foreign_key "members", "workspaces"
+  add_foreign_key "task_lists", "workspaces"
   add_foreign_key "workspaces", "users", column: "author_id"
 end
