@@ -1,6 +1,4 @@
-= render 'workspaces', workspaces: @workspaces
-.col-md-5.text-md-end.pt-md-0.pt-2
-  = link_to 'Создать пространство', new_workspace_path, data: { turbo_frame: :modal }, class: 'btn btn-sm btn-outline-primary mb-1'
-
-= Time.now
-= link_to 'go', destroy_user_session_path, data: {turbo_method: :delete}
+- if @workspaces.count.positive?
+  = render 'workspaces', workspaces: @workspaces
+- else
+  h3.text-center Нет доступных пространств
