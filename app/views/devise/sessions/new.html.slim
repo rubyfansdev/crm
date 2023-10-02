@@ -10,7 +10,7 @@
         = f.input :remember_me, as: :boolean
 
       .actions
-        = f.button :submit, "Log In"
+        = f.button :submit, "Log In", class: 'submit_btn'
 
   .card.shared_links.text-center
     = render "devise/shared/links"
