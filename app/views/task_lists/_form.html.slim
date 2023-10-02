@@ -1,0 +1,5 @@
+= simple_form_for task_list, url: workspace_task_lists_path do |f|
+  = f.input :title, autocomplete: 'title'
+  = f.input :description, autocomplete: 'description'
+  .actions
+    = f.button :submit, 'Create', class: 'submit_btn'
