@@ -1,14 +1,16 @@
 .devise
-  h2.text-center Log in
+  .card
+    h2.text-center Log in
 
-  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    = f.input :email, autofocus: true, autocomplete: "email"
-    = f.input :password, autocomplete: "current-password"
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      = f.input :email, autofocus: true, autocomplete: "email"
+      = f.input :password, autocomplete: "current-password"
 
-    - if devise_mapping.rememberable?
-      = f.input :remember_me, as: :boolean
+      - if devise_mapping.rememberable?
+        = f.input :remember_me, as: :boolean
 
-    .actions
-      = f.button :submit, "Log In"
+      .actions
+        = f.button :submit, "Log In"
 
-  = render "devise/shared/links"
+  .card.shared_links.text-center
+    = render "devise/shared/links"
