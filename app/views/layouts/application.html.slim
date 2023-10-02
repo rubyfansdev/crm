@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title CRM rubyfans
+
+    meta[name='viewport' content='width=device-width,initial-scale=1']
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
+
+  body
+    = render 'shared/navbar' if user_signed_in?
+
+    p#notice.notice = notice
+    p#alert.alert = alert
+
+    .container-fluid
+      = yield
+
+    = turbo_frame_tag :modal

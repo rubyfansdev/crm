@@ -1,16 +1,23 @@
 .devise
-  .card
-    h2.text-center Log in
+  .card.shadow-sm
+    .card-body.mb-3.mt-2
+      .d-flex.pb-3
+        = image_tag('logo.png', class: 'w-25')
+        .w-50
+          h2.text-center Login page
 
-    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-      = f.input :email, autofocus: true, autocomplete: "email"
-      = f.input :password, autocomplete: "current-password"
+      = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        = f.input :email, autofocus: true, autocomplete: 'email'
+        = f.input :password, autocomplete: 'current-password'
 
-      - if devise_mapping.rememberable?
-        = f.input :remember_me, as: :boolean
+        - if devise_mapping.rememberable?
+          = f.input :remember_me, as: :boolean
 
-      .actions.d-grid.gap-2
-        = f.button :submit, "Log In"
+        = f.button :submit, 'Log in', class: 'w-100 fs-6'
 
-  .card.shared_links.text-center
-    = render "devise/shared/links"
+  - if devise_mapping.registerable? && controller_name != 'registrations'
+    .card.shadow-sm.mt-3
+      .card-body.my-2
+        .text-center
+          | Don't have an account?
+          =< link_to 'Sign up', new_registration_path(resource_name)
