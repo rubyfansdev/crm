@@ -71,11 +71,11 @@ class WorkspacesController < ApplicationController
   private
 
   def workspaces
-    current_user.workspaces
+    @workspaces ||= current_user.workspaces
   end
 
   def set_workspace
-    @workspace = Workspace.find(params[:id])
+    @workspace ||= Workspace.find(params[:id])
   end
 
   def workspace_params

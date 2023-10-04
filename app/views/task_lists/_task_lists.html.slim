@@ -1,5 +1,5 @@
 #workspace_task_list
   - workspace.task_lists.each do |task|
-      = task.title 
-      br
+    = link_to task.title, [workspace, task]
+    br
       

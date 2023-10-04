@@ -6,7 +6,7 @@ class TaskListsController < ApplicationController
   end
 
   def show
-    task_list
+   task_list
   end
 
   def create
@@ -61,7 +61,7 @@ class TaskListsController < ApplicationController
   end
 
   def task_list
-    TaskList.find(params[:id])
+    @task_list ||= TaskList.find(params[:id])
   end
 
   def workspace
