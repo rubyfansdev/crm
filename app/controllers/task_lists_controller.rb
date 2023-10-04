@@ -47,8 +47,8 @@ class TaskListsController < ApplicationController
       task_list.destroy
       format.turbo_stream do
         render turbo_stream: [turbo_stream.remove(task_list),
-                              turbo_stream.update('workspace',
-                                                  partial: '#')]
+                              turbo_stream.update('workspace_task_list', partial: 'task_lists/task_lists',
+                                                  locals: { workspace: })]
       end
       format.html { redirect_to worksapce, notice: 'Tasklist was deleted' }
     end
