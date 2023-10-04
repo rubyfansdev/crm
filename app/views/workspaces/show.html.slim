@@ -1,2 +1,3 @@
-h1 Workspaces#show
-p Find me in app/views/workspaces/show.html.slim
+= render partial: 'task_lists/task_lists', locals: { workspace: @workspace }
+.text-center  
+  = link_to 'Создать таск', new_workspace_task_list_path(@workspace), data: { turbo_frame: :modal }, class: 'btn btn-sm btn-outline-primary mb-1'

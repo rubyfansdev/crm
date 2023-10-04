@@ -3,6 +3,7 @@ class Workspace < ApplicationRecord
 
   has_many :members, dependent: :destroy
   has_many :users, through: :members, dependent: :destroy
+  has_many :task_lists, dependent: :destroy
 
   validates :title, presence: true
 
