@@ -59,7 +59,7 @@ class WorkspacesController < ApplicationController
     respond_to do |format|
       @workspace.destroy if current_user == @workspace.author
       format.turbo_stream do
-        render turbo_stream: [turbo_stream.remove(@question),
+        render turbo_stream: [turbo_stream.remove(@workspace),
                               turbo_stream.update('workspaces',
                                                   partial: 'workspaces/workspaces',
                                                   locals: { workspaces: })]

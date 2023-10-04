@@ -7,6 +7,7 @@ gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
 gem 'sqlite3', '~> 1.4'
 
 gem 'cssbundling-rails'
+gem 'capybara'
 gem 'devise'
 gem 'devise-i18n'
 gem 'dotenv-rails'
@@ -17,6 +18,7 @@ gem 'rails-i18n'
 gem 'redis', '~> 4.0'
 gem 'sassc-rails'
 gem 'sidekiq'
+gem 'shoulda-matchers'
 gem 'simple_form'
 gem 'slim-rails', '~> 3.6.1'
 gem 'sprockets-rails'
@@ -32,6 +34,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'database_cleaner'
   gem 'rubocop', require: false
   gem 'rubocop-i18n', require: false
   gem 'rubocop-performance', require: false
