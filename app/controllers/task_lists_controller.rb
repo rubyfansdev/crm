@@ -19,6 +19,7 @@ class TaskListsController < ApplicationController
                                                                            locals: { task_list: @task_list,
                                                                                      workspace: })]
         end
+        format.html { redirect_to workspace, notice: 'Your task_list successfully created.' }
       else
         format.turbo_stream do
           render turbo_stream: turbo_stream.update('alert', partial: 'shared/errors', locals: { resource: @task_list })
