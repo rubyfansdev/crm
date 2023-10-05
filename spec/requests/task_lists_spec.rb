@@ -40,7 +40,7 @@ RSpec.describe 'TaskLists', type: :request do
 
   describe 'GET /destroy' do
     it 'returns http success' do
-      delete workspace_task_list_path(workspace, task)
+      delete workspace_task_list_path(workspace, task_list)
       expect(response).to redirect_to(workspace)
     end
   end

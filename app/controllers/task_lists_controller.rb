@@ -50,6 +50,7 @@ class TaskListsController < ApplicationController
   end
 
   def destroy
+    # debugger
     respond_to do |format|
       task_list.destroy
       format.turbo_stream do
@@ -57,7 +58,7 @@ class TaskListsController < ApplicationController
                               turbo_stream.update('workspace_task_list', partial: 'task_lists/task_lists',
                                                                          locals: { workspace: })]
       end
-      format.html { redirect_to worksapce, notice: 'Tasklist was deleted' }
+      format.html { redirect_to workspace, notice: 'Tasklist was deleted' }
     end
   end
 
