@@ -2,6 +2,7 @@ class TaskListsController < ApplicationController
   before_action :authenticate_user!
 
   def new
+    workspace
     @task_list = workspace.task_lists.new
   end
 
@@ -26,13 +27,18 @@ class TaskListsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    workspace
+    task_list
+  end
 
   def update
     respond_to do |format|
       if task_list.update(task_list_params)
         format.turbo_stream do
-          render turbo_stream: [turbo_stream.update('workspace', partial: '#', locals: { task_list: @task_list })]
+          render turbo_stream: [turbo_stream.update('workspace_task_list', partial: 'task_lists/task_lists',
+                                                                           locals: { task_list:,
+                                                                                     workspace: })]
         end
       else
         format.turbo_stream do
@@ -61,7 +67,7 @@ class TaskListsController < ApplicationController
   end
 
   def task_list
-    @task_list ||= TaskList.find(params[:id])
+    @task_list ||= workspace.task_lists.find(params[:id])
   end
 
   def workspace

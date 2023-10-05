@@ -1,4 +1,4 @@
-= simple_form_for task_list, url: workspace_task_lists_path do |f|
+= simple_form_for [workspace, task_list] do |f|
   = f.input :title, autocomplete: 'title'
   = f.input :description, autocomplete: 'description'
   .actions
