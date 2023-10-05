@@ -38,6 +38,25 @@ RSpec.describe 'TaskLists', type: :request do
     end
   end
 
+  describe 'PATCH /update' do
+    it 'update http status success' do
+      expect do
+
+        patch workspace_task_lists_path(workspace), params: {
+          id: task_list,
+          task_list: {
+            title: 'My new task list',
+            description: 'Task new description',
+            workspace:
+          }
+        }
+      end
+      task_list.reload
+      expect(task_list.title).to eq 'My new task list'
+      expect(task_list.description).to eq 'Task new description'
+    end
+  end
+
   describe 'GET /destroy' do
     it 'returns http success' do
       delete workspace_task_list_path(workspace, task_list)
