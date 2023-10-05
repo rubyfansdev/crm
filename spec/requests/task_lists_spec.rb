@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe 'TaskLists', type: :request do
   let(:user) { create(:user) }
   let(:workspace) { create(:workspace, author: user) }
+  let(:task_list) { create(:task_list, workspace:) }
 
   before do
     sign_in(user)
@@ -31,12 +32,16 @@ RSpec.describe 'TaskLists', type: :request do
   end
 
   describe 'GET /edit' do
-    let(:task_list) { create(:task_list, workspace:)}
     it 'edit http status success' do
       get edit_workspace_task_list_path(workspace, task_list)
       expect(response).to have_http_status(:success)
     end
   end
 
-  
+  describe 'GET /destroy' do
+    it 'returns http success' do
+      delete workspace_task_list_path(workspace, task)
+      expect(response).to redirect_to(workspace)
+    end
+  end
 end
