@@ -4,14 +4,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.2'
 gem 'rails', '~> 7.0.4', '>= 7.0.4.3'
 
-gem 'sqlite3', '~> 1.4'
-
 gem 'cssbundling-rails'
 gem 'devise'
 gem 'devise-i18n'
 gem 'dotenv-rails', '~> 2.8', '>= 2.8.1'
 gem 'jsbundling-rails'
-gem 'pg'
+gem 'pg', '~> 1.5', '>= 1.5.4'
 gem 'puma', '~> 6.0'
 gem 'pundit'
 gem 'rails-i18n'
