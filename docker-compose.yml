@@ -10,6 +10,8 @@ services:
       POSTGRES_PASSWORD: ${PG_PASSWORD}
     volumes:
       - postgres:/var/lib/postgresql/data
+      - ./psql_history:/root/.psql_history
+      - ./.psqlrc:/root/.psqlrc:ro
 
   redis:
     image: redis:6.2-alpine
