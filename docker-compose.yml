@@ -1,13 +1,17 @@
-version: "3.5"
+version: "3.8"
 services:
   database:
     container_name: postgres_container
-    image: postgres:14
+    image: postgres:15
+    env_file: .env
     ports:
       - '5432:5432'
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+    volumes: 
+      - postgres:/var/lib/postgresql/data
+      - postgres_history:/var/log/psql_history
       
   cache:
     image: redis:6.2-alpine
@@ -15,3 +19,5 @@ services:
       - '6379'
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+    volumes: 
+      - redis:/data
