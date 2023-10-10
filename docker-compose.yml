@@ -1,7 +1,6 @@
 version: "3.8"
 services:
-  database:
-    container_name: postgres_container
+  postgres:
     image: postgres:15
     env_file: .env
     ports:
@@ -9,15 +8,18 @@ services:
     environment:
       POSTGRES_USER: ${PG_USER}
       POSTGRES_PASSWORD: ${PG_PASSWORD}
-    volumes: 
+    volumes:
       - postgres:/var/lib/postgresql/data
-      - postgres_history:/var/log/psql_history
-      
-  cache:
+
+  redis:
     image: redis:6.2-alpine
     ports:
-      - '6379'
+      - '63790:6379'
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-    volumes: 
+      ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
       - redis:/data
+
+volumes:
+  postgres:
+  redis:
