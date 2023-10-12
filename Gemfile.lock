@@ -144,6 +144,7 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
+    pg (1.5.4)
     puma (6.3.0)
       nio4r (~> 2.0)
     pundit (2.3.0)
@@ -273,7 +274,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.6.3-x86_64-linux)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     temple (0.10.2)
@@ -309,10 +309,11 @@ DEPENDENCIES
   debug
   devise
   devise-i18n
-  dotenv-rails
+  dotenv-rails (~> 2.8, >= 2.8.1)
   factory_bot_rails (~> 6.2)
   faker
   jsbundling-rails
+  pg (~> 1.5, >= 1.5.4)
   puma (~> 6.0)
   pundit
   rails (~> 7.0.4, >= 7.0.4.3)
@@ -329,7 +330,6 @@ DEPENDENCIES
   simple_form
   slim-rails (~> 3.6.1)
   sprockets-rails
-  sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
   web-console
